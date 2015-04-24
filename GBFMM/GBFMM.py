@@ -1,3 +1,6 @@
+# ------- #
+# Normal Mixture #
+# ------- #
 # Normal Distribution Functions 
 def norm_means(data): 
     cols = data.shape[1]
@@ -59,8 +62,7 @@ def normal_mixmod(ng, data):
     mix_mod.EM(mix_dat, 40,.2)
     mix_mod.classify(mix_dat)
     return mix_mod
-
-    
+   
 # Results 
 def normal_results(ng,data): 
     out = normal_mixmod(ng, data)

@@ -1,4 +1,4 @@
-library(lme4)
+library(lme4); library(dplyr); library(ggplot2)
 m1 <- matrix(NA, ncol=10, nrow=500)
 m2 <- matrix(NA, ncol=10, nrow=250)
 m3 <- matrix(NA, ncol=10, nrow=250)
@@ -69,19 +69,34 @@ new_dat$wt4 <- as.integer(rep(post[,4], 10)*100)
 
 new_dat$out <- as.integer(new_dat$value-1)
 fit <- glm(out ~ bs(age, df = 3), data = new_dat, weights=wt1, family=binomial)
-cl1 <- cbind(new_dat$age, predict(fit, type= "response"))
+cl1 <- data.frame(Age=new_dat$age, Outcome=predict(fit, type= "response"), Cluster="1")
+by_cl1_1 <- group_by(cl1, Age)
+by_cl11 <- summarise(by_cl1_1, n = mean(Outcome), Cluster="1")
 
 new_dat$out <- as.integer(new_dat$value-1)
 fit <- glm(out ~ bs(age, df = 3), data = new_dat, weights=wt2, family=binomial)
-cl2 <- cbind(new_dat$age, predict(fit, type= "response"))
+cl2 <- data.frame(Age=new_dat$age, Outcome=predict(fit, type= "response"), Cluster="2")
+by_cl1_2 <- group_by(cl2, Age)
+by_cl12 <- summarise(by_cl1_2, n = mean(Outcome), Cluster="2")
 
 new_dat$out <- as.integer(new_dat$value-1)
 fit <- glm(out ~ bs(age, df = 3), data = new_dat, weights=wt3, family=binomial)
-cl3 <- cbind(new_dat$age, predict(fit, type= "response"))
+cl3 <- data.frame(Age=new_dat$age, Outcome=predict(fit, type= "response"), Cluster="3")
+by_cl1_3 <- group_by(cl3, Age)
+by_cl13 <- summarise(by_cl1_3, n = mean(Outcome), Cluster="3")
 
 new_dat$out <- as.integer(new_dat$value-1)
 fit <- glm(out ~ bs(age, df = 3), data = new_dat, weights=wt4, family=binomial)
-cl4 <- cbind(new_dat$age, predict(fit, type= "response"))
+cl4 <- data.frame(Age=new_dat$age, Outcome=predict(fit, type= "response"), Cluster="4")
+by_cl1_4 <- group_by(cl4, Age)
+by_cl14 <- summarise(by_cl1_4, n = mean(Outcome), Cluster="4")
+
+dat <- rbind(by_cl11, by_cl12, by_cl13, by_cl14)
+
+dat$Cluster <- factor(dat$Cluster)
+ggplot(dat, aes(x=Age, y=n, color=Cluster)) +
+	geom_line()
+
 
 # write.csv(bin_dat, file="/Universe/GitHub/STA663_Project/Data/bindat.csv")
 

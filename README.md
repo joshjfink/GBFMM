@@ -20,5 +20,6 @@ Dependencies
 **Recommended**
 
 * ggplot (for trajectory plotting function included in the repository)
+* pandas (for trajectory plotting function included in the repository)
 * STAN (for Bayesian alternative specification)
 * pystan (for Bayesian alternative specification)

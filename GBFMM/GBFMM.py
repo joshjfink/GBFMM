@@ -1,3 +1,11 @@
+from __future__ import division
+import os
+import sys
+import glob
+from mixture import *
+import mixture
+import numpy as np
+
 # ------- #
 # Normal Mixture #
 # ------- #

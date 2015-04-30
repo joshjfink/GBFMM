@@ -1,0 +1,875 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{STA663\_Final\_Project}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{1) Background}\label{background}
+
+    \subsection{Problem:}\label{problem}
+
+If a researcher is working with longitudinal or panel data, he or she
+may want to detect latent groupings or clusters in these data.
+Specifically, for life-course approaches to research, you may want to
+identify latent trajectories of a behavior or outcome across time.
+
+\subsection{Outline of Algorithm:}\label{outline-of-algorithm}
+
+The paper I have chosen describes a type of finite mixture algorithm,
+one for modeling patterns of an outcome of interest as clusters across
+time. The method is termed by the authors as Group-based Latent
+Trajectory Modeling, and was developed by Daniel Nagin in 1999.
+
+The general specification for the group based latent trajectory models
+is provided in equations (1) and (2). Equation (1) describes the basic
+form of the finite mixture model--i.e., summing a finite number of
+latent groupings believed to compose the underlying population. Since
+group membership is not observed, the proportion of the \(j\) underlying
+population belonging to each of the latent trajectory groups \(\pi_j\),
+must be estimated. This requires the aggregation of the \(J\)
+conditional likelihood functions, forming the unconditional probability
+of the data, \(Y_i\) (Nagin 2005).
+
+\[P(Y_i) = \sum_{j}^J \pi_j P^j (Y_i)\tag{1}\]
+
+Here, \(P(Y_i)\) estimates the unconditional probability of seeing the
+trajectory of the outcome measure for individual \(i\).
+
+The key to the ``group-based'' approach is an underlying idea called
+``conditional independence.'' The likelihood function this produces is
+denoted in equation (2). For a give group \(j\), conditional
+independence makes the assumption that the distribution of \(y_{it}\) is
+independent of the observed value of the outcome in prior periods,
+\(y_{it-1}\), \(y_{it-2}\),\ldots{} This assumption helps to reduce the
+complexity of the model, and when combined with the EM algorithm, allows
+for identification of latent trajectory groupings despite the complex
+nature of the model and data.
+
+\[L = \prod^N P(Y_i)\tag{2}\]
+
+    \subsection{Readme for Python Module:}\label{readme-for-python-module}
+
+\subsubsection{Group-Based Finite Mixture Models: A Latent Trajectory
+Approach}\label{group-based-finite-mixture-models-a-latent-trajectory-approach}
+
+\textbf{Code for course project use only at this time.}
+
+Final project for STA 663 * Takes time variable and continuous outcome *
+Generates latent trajectories (time-dependent clusters) of outcome
+behavior over time
+
+\textbf{Dependencies}
+
+Required
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Python (created using 2.7.x)
+\item
+  Numpy
+\item
+  Scipy
+\item
+  Pymix (https://github.com/klahnakoski/pymix.git)
+\end{itemize}
+
+Recommended
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  ggplot (for trajectory plotting function included in the repository)
+\item
+  pandas (for trajectory plotting function included in the repository)
+\item
+  STAN (for Bayesian alternative specification)
+\item
+  pystan (for Bayesian alternative specification)
+\item
+  rpy2 (for loading in test data from R)
+\end{itemize}
+
+    \section{2) Implementation}\label{implementation}
+
+    \emph{Note: I had started to build these distribution functions myself
+(see py scripts in GitHub repo) but then I discovered a python library
+with mixture distributions that could be combined and reshaped to
+estimate these models (`Pymix' package)!}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}78}]:} \PY{k+kn}{from} \PY{n+nn}{\PYZus{}\PYZus{}future\PYZus{}\PYZus{}} \PY{k+kn}{import} \PY{n}{division}
+         \PY{k+kn}{import} \PY{n+nn}{os}
+         \PY{k+kn}{import} \PY{n+nn}{sys}
+         \PY{k+kn}{import} \PY{n+nn}{glob}
+         \PY{k+kn}{from} \PY{n+nn}{mixture} \PY{k+kn}{import} \PY{o}{*}
+         \PY{k+kn}{import} \PY{n+nn}{mixture}
+         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+         \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
+         \PY{k+kn}{from} \PY{n+nn}{ggplot} \PY{k+kn}{import} \PY{o}{*}
+         \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
+         \PY{k+kn}{import} \PY{n+nn}{pystan}
+         \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+         \PY{o}{\PYZpc{}}\PY{k}{precision} 4
+         \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} rpy2.ipython
+         
+         \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{34}\PY{p}{)}
+         
+         \PY{c}{\PYZsh{} \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} \PYZsh{}}
+         \PY{c}{\PYZsh{} Normal Mixture \PYZsh{}}
+         \PY{c}{\PYZsh{} \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} \PYZsh{}}
+         \PY{c}{\PYZsh{} Normal Distribution Functions }
+         
+         \PY{c}{\PYZsh{} Generate Means of Normal Mixture}
+         \PY{k}{def} \PY{n+nf}{norm\PYZus{}means}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:} 
+             \PY{n}{cols} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+             \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{repeat}\PY{p}{(}\PY{l+m+mf}{0.0}\PY{p}{,}\PY{n}{cols}\PY{p}{)} 
+         
+         \PY{c}{\PYZsh{} Generate Covariance Structure of Normal Mixture based on conditional independence assumption}
+         \PY{c}{\PYZsh{} (See Equation (2) in outline of algorithm)}
+         \PY{k}{def} \PY{n+nf}{norm\PYZus{}cov}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:}
+             \PY{n}{m} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+             \PY{n}{covs} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{repeat}\PY{p}{(}\PY{l+m+mf}{1.0}\PY{p}{,}\PY{n}{m}\PY{p}{)} 
+             \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{diag}\PY{p}{(}\PY{n}{covs}\PY{p}{)}
+         
+         \PY{c}{\PYZsh{} Single Multivariate Normal distribution function}
+         \PY{k}{def} \PY{n+nf}{norm\PYZus{}singdist}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}\PY{p}{:}
+             \PY{n}{m} \PY{o}{=} \PY{n}{data}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+             \PY{n}{dist} \PY{o}{=} \PY{n}{mixture}\PY{o}{.}\PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{n}{m}\PY{p}{,} 
+                 \PY{n}{norm\PYZus{}means}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{,}\PY{n}{norm\PYZus{}cov}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{)}
+             \PY{k}{return} \PY{n}{dist}
+         
+         \PY{c}{\PYZsh{} Generalize to multiple clusters of multivariate distribution function}
+         \PY{k}{def} \PY{n+nf}{norm\PYZus{}multdist}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}\PY{p}{:}
+             \PY{n}{temp} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{p}{)}
+             \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{ng}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{temp}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{norm\PYZus{}singdist}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{data}\PY{p}{)}\PY{p}{)}
+             \PY{k}{return} \PY{n}{temp}
+         
+         \PY{c}{\PYZsh{} Data functions}
+         \PY{k}{def} \PY{n+nf}{build\PYZus{}mix\PYZus{}dat}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:}
+             \PY{n}{mixdat} \PY{o}{=} \PY{n}{mixture}\PY{o}{.}\PY{n}{DataSet}\PY{p}{(}\PY{p}{)}
+             \PY{n}{mixdat}\PY{o}{.}\PY{n}{fromArray}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+             \PY{k}{return} \PY{n}{mixdat}
+         
+         \PY{c}{\PYZsh{} Normal Mixture Model }
+         \PY{k}{def} \PY{n+nf}{intialize\PYZus{}normal\PYZus{}model}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}\PY{p}{:}
+             \PY{n}{mod\PYZus{}ps} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{repeat}\PY{p}{(}\PY{l+m+mf}{1.0}\PY{o}{/}\PY{n}{ng}\PY{p}{,} \PY{n}{ng}\PY{p}{)}
+             \PY{k}{if} \PY{n}{ng} \PY{o}{==}\PY{l+m+mi}{2}\PY{p}{:}
+                 \PY{n}{n1}\PY{p}{,}\PY{n}{n2} \PY{o}{=} \PY{n}{norm\PYZus{}multdist}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}
+                 \PY{n}{mix\PYZus{}} \PY{o}{=} \PY{n}{mixture}\PY{o}{.}\PY{n}{MixtureModel}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{mod\PYZus{}ps}\PY{p}{,}\PY{p}{[}\PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{]}\PY{p}{)}
+             \PY{k}{elif} \PY{n}{ng} \PY{o}{==} \PY{l+m+mi}{3}\PY{p}{:}  
+                 \PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3} \PY{o}{=} \PY{n}{norm\PYZus{}multdist}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}
+                 \PY{n}{mix\PYZus{}} \PY{o}{=} \PY{n}{mixture}\PY{o}{.}\PY{n}{MixtureModel}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{mod\PYZus{}ps}\PY{p}{,}\PY{p}{[}\PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{]}\PY{p}{)}
+             \PY{k}{elif} \PY{n}{ng} \PY{o}{==} \PY{l+m+mi}{4}\PY{p}{:}  
+                 \PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{,}\PY{n}{n4} \PY{o}{=} \PY{n}{norm\PYZus{}multdist}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}
+                 \PY{n}{mix\PYZus{}} \PY{o}{=} \PY{n}{mixture}\PY{o}{.}\PY{n}{MixtureModel}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{mod\PYZus{}ps}\PY{p}{,}\PY{p}{[}\PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{,}\PY{n}{n4}\PY{p}{]}\PY{p}{)}
+             \PY{k}{elif} \PY{n}{ng} \PY{o}{==} \PY{l+m+mi}{5}\PY{p}{:}  
+                 \PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{,}\PY{n}{n4}\PY{p}{,}\PY{n}{n5} \PY{o}{=} \PY{n}{norm\PYZus{}multdist}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}
+                 \PY{n}{mix\PYZus{}} \PY{o}{=} \PY{n}{mixture}\PY{o}{.}\PY{n}{MixtureModel}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{mod\PYZus{}ps}\PY{p}{,}\PY{p}{[}\PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{,}\PY{n}{n4}\PY{p}{,}\PY{n}{n5}\PY{p}{]}\PY{p}{)}
+             \PY{k}{elif} \PY{n}{ng} \PY{o}{==} \PY{l+m+mi}{6}\PY{p}{:}  
+                 \PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{,}\PY{n}{n4}\PY{p}{,}\PY{n}{n5}\PY{p}{,}\PY{n}{n6} \PY{o}{=} \PY{n}{norm\PYZus{}multdist}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}
+                 \PY{n}{mix\PYZus{}} \PY{o}{=} \PY{n}{mixture}\PY{o}{.}\PY{n}{MixtureModel}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{mod\PYZus{}ps}\PY{p}{,}\PY{p}{[}\PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{,}\PY{n}{n4}\PY{p}{,}\PY{n}{n5}\PY{p}{,}\PY{n}{n6}\PY{p}{]}\PY{p}{)}
+             \PY{k}{elif} \PY{n}{ng} \PY{o}{==} \PY{l+m+mi}{7}\PY{p}{:}  
+                 \PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{,}\PY{n}{n4}\PY{p}{,}\PY{n}{n5}\PY{p}{,}\PY{n}{n6}\PY{p}{,}\PY{n}{n7} \PY{o}{=} \PY{n}{norm\PYZus{}multdist}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}
+                 \PY{n}{mix\PYZus{}} \PY{o}{=} \PY{n}{mixture}\PY{o}{.}\PY{n}{MixtureModel}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{mod\PYZus{}ps}\PY{p}{,}\PY{p}{[}\PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{,}\PY{n}{n4}\PY{p}{,}\PY{n}{n5}\PY{p}{,}\PY{n}{n6}\PY{p}{,}\PY{n}{n7}\PY{p}{]}\PY{p}{)}
+             \PY{k}{elif} \PY{n}{ng} \PY{o}{==} \PY{l+m+mi}{8}\PY{p}{:}  
+                 \PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{,}\PY{n}{n4}\PY{p}{,}\PY{n}{n5}\PY{p}{,}\PY{n}{n6}\PY{p}{,}\PY{n}{n7}\PY{p}{,}\PY{n}{n8} \PY{o}{=} \PY{n}{norm\PYZus{}multdist}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}
+                 \PY{n}{mix\PYZus{}} \PY{o}{=} \PY{n}{mixture}\PY{o}{.}\PY{n}{MixtureModel}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{mod\PYZus{}ps}\PY{p}{,}\PY{p}{[}\PY{n}{n1}\PY{p}{,}\PY{n}{n2}\PY{p}{,}\PY{n}{n3}\PY{p}{,}\PY{n}{n4}\PY{p}{,}\PY{n}{n5}\PY{p}{,}\PY{n}{n6}\PY{p}{,}\PY{n}{n7}\PY{p}{,}\PY{n}{n8}\PY{p}{]}\PY{p}{)}
+             \PY{k}{return} \PY{n}{mix\PYZus{}} 
+         
+         \PY{c}{\PYZsh{} Run Normal Mixture Model}
+         \PY{k}{def} \PY{n+nf}{normal\PYZus{}mixmod}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:}
+             \PY{n}{mix\PYZus{}mod} \PY{o}{=} \PY{n}{intialize\PYZus{}normal\PYZus{}model}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{)}
+             \PY{n}{mix\PYZus{}dat} \PY{o}{=} \PY{n}{build\PYZus{}mix\PYZus{}dat}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+             \PY{n}{mix\PYZus{}mod}\PY{o}{.}\PY{n}{modelInitialization}\PY{p}{(}\PY{n}{mix\PYZus{}dat}\PY{p}{)}
+             \PY{n}{mix\PYZus{}mod}\PY{o}{.}\PY{n}{EM}\PY{p}{(}\PY{n}{mix\PYZus{}dat}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{silent}\PY{o}{=}\PY{n}{s}\PY{p}{)}
+             \PY{n}{mix\PYZus{}mod}\PY{o}{.}\PY{n}{classify}\PY{p}{(}\PY{n}{mix\PYZus{}dat}\PY{p}{,} \PY{n}{silent}\PY{o}{=}\PY{n}{s}\PY{p}{)}
+             \PY{k}{return} \PY{n}{mix\PYZus{}mod}
+            
+         \PY{c}{\PYZsh{} Results }
+         \PY{k}{def} \PY{n+nf}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{p}{,}\PY{n}{data}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{:} 
+             \PY{n}{out} \PY{o}{=} \PY{n}{normal\PYZus{}mixmod}\PY{p}{(}\PY{n}{ng}\PY{p}{,} \PY{n}{data}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{n}{s}\PY{p}{)}
+             \PY{n}{traj} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{p}{)}
+             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{ng}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{traj}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{out}\PY{o}{.}\PY{n}{components}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{o}{.}\PY{n}{distList}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{mu}\PY{p}{)}
+             \PY{k}{return} \PY{n}{traj}
+         
+         \PY{c}{\PYZsh{} Trajectory Plotting Function}
+         \PY{k}{def} \PY{n+nf}{plot\PYZus{}traj}\PY{p}{(}\PY{n}{outs}\PY{p}{)}\PY{p}{:}
+             \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{2}\PY{p}{:}
+                 \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{one}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{two}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{\PYZcb{}}
+             \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{3}\PY{p}{:}
+                 \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{one}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{two}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{three}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{\PYZcb{}}
+             \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{4}\PY{p}{:} 
+                 \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{one}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{two}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{three}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{four}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{\PYZcb{}}
+             \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{5}\PY{p}{:}
+                 \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{one}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{two}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{three}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{four}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{five}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{\PYZcb{}}
+             \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{6}\PY{p}{:}
+                 \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{one}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{two}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{three}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{four}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{five}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{six}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{\PYZcb{}}
+             \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{7}\PY{p}{:} 
+                 \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{one}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{two}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{three}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{four}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{five}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{six}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{seven}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{\PYZcb{}}
+             \PY{k}{elif} \PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{8}\PY{p}{:}
+                 \PY{n}{d} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{one}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{two}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{three}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{four}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{five}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{six}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{seven}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{eight}\PY{l+s}{\PYZsq{}} \PY{p}{:} \PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{outs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{\PYZcb{}}
+             \PY{n}{dat} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{d}\PY{p}{)} 
+             \PY{n}{dm} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{melt}\PY{p}{(}\PY{n}{dat}\PY{p}{,} \PY{n}{id\PYZus{}vars}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{var\PYZus{}name}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Latent Class}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{value\PYZus{}name}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Value}\PY{l+s}{\PYZsq{}}\PY{p}{)} 
+             \PY{k}{print} \PY{n}{ggplot}\PY{p}{(}\PY{n}{dm}\PY{p}{,} \PY{n}{aes}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{Value}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Latent Class}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PYZbs{}
+                 \PY{n}{geom\PYZus{}point}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{80}\PY{p}{)} \PY{o}{+} \PYZbs{}
+                 \PY{n}{geom\PYZus{}line}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)} \PY{o}{+} \PYZbs{}
+                 \PY{n}{theme\PYZus{}bw}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The rpy2.ipython extension is already loaded. To reload it, use:
+  \%reload\_ext rpy2.ipython
+    \end{Verbatim}
+
+    \section{3) Testing}\label{testing}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{c}{\PYZsh{} \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} \PYZsh{}}
+         \PY{c}{\PYZsh{} Tests for convergence given mixture distributions with given number of groupings}
+         \PY{c}{\PYZsh{} (these also test that the number of latent groups produced equal the number of groups specified)}
+         \PY{c}{\PYZsh{} test\PYZus{}numgroups\PYZus{}3}
+         \PY{c}{\PYZsh{} \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} \PYZsh{}}
+         \PY{n}{dist3} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{data3} \PY{o}{=} \PY{n}{dist3}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data3}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{3}
+          
+         \PY{c}{\PYZsh{} test\PYZus{}numgroups\PYZus{}4}
+         \PY{n}{dist4} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,}\PY{l+m+mf}{0.4}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{0.3}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{data4} \PY{o}{=} \PY{n}{dist4}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data4}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{4}
+         
+         \PY{c}{\PYZsh{} test\PYZus{}numgroups\PYZus{}5}
+         \PY{n}{dist5} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,}\PY{l+m+mf}{0.4}\PY{p}{,}\PY{l+m+mf}{0.35}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{0.3}\PY{p}{,}\PY{l+m+mf}{0.05}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{0.32}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.22}\PY{p}{,}\PY{l+m+mf}{0.08}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{15}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{data5} \PY{o}{=} \PY{n}{dist5}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data5}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{5}
+         
+         \PY{c}{\PYZsh{} test\PYZus{}numgroups\PYZus{}6}
+         \PY{n}{dist6} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{1.5}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.6}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{0.35}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.05}\PY{p}{,}\PY{l+m+mf}{0.0}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.32}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.22}\PY{p}{,}\PY{l+m+mf}{0.08}\PY{p}{,}\PY{l+m+mf}{0.15}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.25}\PY{p}{]}\PY{p}{,}
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{0.35}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{data6} \PY{o}{=} \PY{n}{dist6}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{1000}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data6}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{6}
+         
+         \PY{c}{\PYZsh{} test\PYZus{}numgroups\PYZus{}7}
+         \PY{n}{dist7} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{1.5}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.6}\PY{p}{,}\PY{l+m+mf}{0.25}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{0.35}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.05}\PY{p}{,}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.32}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.22}\PY{p}{,}\PY{l+m+mf}{0.08}\PY{p}{,}\PY{l+m+mf}{0.15}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.25}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{]}\PY{p}{,}
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{0.35}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.22}\PY{p}{,}\PY{l+m+mf}{0.08}\PY{p}{,}\PY{l+m+mf}{0.15}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.15}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{data7} \PY{o}{=} \PY{n}{dist7}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{1000}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data7}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{7}
+         
+         \PY{c}{\PYZsh{} test\PYZus{}numgroups\PYZus{}8}
+         \PY{n}{dist8} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{,}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{1.5}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.6}\PY{p}{,}\PY{l+m+mf}{0.25}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{0.35}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.05}\PY{p}{,}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.32}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,}\PY{l+m+mf}{0.35}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.22}\PY{p}{,}\PY{l+m+mf}{0.08}\PY{p}{,}\PY{l+m+mf}{0.15}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.25}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{,}\PY{l+m+mf}{0.05}\PY{p}{]}\PY{p}{,}
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{0.35}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,}\PY{l+m+mf}{0.1}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.22}\PY{p}{,}\PY{l+m+mf}{0.08}\PY{p}{,}\PY{l+m+mf}{0.15}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.15}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{0.3}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.15}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,}\PY{l+m+mf}{0.35}\PY{p}{,}\PY{l+m+mf}{0.0}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{data8} \PY{o}{=} \PY{n}{dist8}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{1000}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{8}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data8}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{8}
+         
+         \PY{c}{\PYZsh{} \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} \PYZsh{}}
+         \PY{c}{\PYZsh{} Tests for convergence for small N }
+         \PY{c}{\PYZsh{} \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} \PYZsh{}}
+         \PY{n}{dist\PYZus{}small\PYZus{}1} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{data\PYZus{}small\PYZus{}1} \PY{o}{=} \PY{n}{dist\PYZus{}small\PYZus{}1}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{30}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data\PYZus{}small\PYZus{}1}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{3}
+         
+         \PY{n}{dist\PYZus{}small\PYZus{}2} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,}\PY{l+m+mf}{0.4}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{0.3}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{data\PYZus{}small\PYZus{}2} \PY{o}{=} \PY{n}{dist\PYZus{}small\PYZus{}2}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{50}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data\PYZus{}small\PYZus{}2}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{4}
+         
+         \PY{c}{\PYZsh{} \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} \PYZsh{}}
+         \PY{c}{\PYZsh{} Tests for convergence for large N }
+         \PY{c}{\PYZsh{} \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} \PYZsh{}}
+         \PY{n}{dist\PYZus{}large\PYZus{}1} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{data\PYZus{}large\PYZus{}1} \PY{o}{=} \PY{n}{dist\PYZus{}large\PYZus{}1}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{2000}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data\PYZus{}large\PYZus{}1}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{3}
+         
+         \PY{n}{dist\PYZus{}large\PYZus{}2} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{0.4}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{0.3}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{data\PYZus{}large\PYZus{}2} \PY{o}{=} \PY{n}{dist\PYZus{}large\PYZus{}2}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{3000}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data\PYZus{}large\PYZus{}2}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{4}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}69}]:} \PY{c}{\PYZsh{} \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} \PYZsh{}}
+         \PY{c}{\PYZsh{} Test Trajectory Plotting Function \PYZam{} Visual Check of Trajectories}
+         \PY{c}{\PYZsh{} \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} \PYZsh{}}
+         \PY{n}{d1} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.14}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.8}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,}\PY{l+m+mf}{0.4}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{0.3}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,}\PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         
+         \PY{n}{d2} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{2.0}\PY{p}{,}\PY{l+m+mf}{4.5}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{0.0}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{]}\PY{p}{,}
+                             \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         
+         \PY{n}{d3} \PY{o}{=} \PY{n}{MultiNormalDistribution}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{p}{[}\PY{l+m+mf}{3.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{0.0}\PY{p}{]}\PY{p}{,} 
+                             \PY{p}{[}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,}\PY{l+m+mf}{0.0}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{]}\PY{p}{,} 
+                              \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{]}\PY{p}{,}
+                             \PY{p}{[}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.4}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+             
+         \PY{n}{data1} \PY{o}{=} \PY{n}{d1}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{300}\PY{p}{)}
+         \PY{n}{data2} \PY{o}{=} \PY{n}{d2}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+         \PY{n}{data3} \PY{o}{=} \PY{n}{d3}\PY{o}{.}\PY{n}{sampleSet}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+         
+         \PY{c}{\PYZsh{} print np.array(data1)}
+         \PY{n}{data3}\PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{concatenate}\PY{p}{(}\PY{p}{[}\PY{n}{data1}\PY{p}{,} \PY{n}{data2}\PY{p}{,} \PY{n}{data3}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n}{outs\PYZus{}1} \PY{o}{=} \PY{n}{GBFMM}\PY{p}{(}\PY{n}{ng}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{data3}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n}{plot\PYZus{}traj}\PY{p}{(}\PY{n}{outs\PYZus{}1}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Step 1: log likelihood: -3312.4960746   (diff=-3311.4960746)
+Step 2: log likelihood: -3298.60641088   (diff=13.8896637209)
+Step 3: log likelihood: -3263.23596942   (diff=35.3704414607)
+Step 4: log likelihood: -3187.20997306   (diff=76.0259963601)
+Step 5: log likelihood: -3094.92279202   (diff=92.2871810369)
+Step 6: log likelihood: -3027.36520871   (diff=67.5575833093)
+Step 7: log likelihood: -2996.13875147   (diff=31.2264572371)
+Step 8: log likelihood: -2980.69605671   (diff=15.4426947604)
+Step 9: log likelihood: -2969.45658442   (diff=11.2394722896)
+Step 10: log likelihood: -2958.9513708   (diff=10.505213623)
+Step 11: log likelihood: -2949.23252172   (diff=9.718849085)
+Step 12: log likelihood: -2941.73097139   (diff=7.50155032951)
+Step 13: log likelihood: -2937.35778592   (diff=4.37318547048)
+Step 14: log likelihood: -2935.01655564   (diff=2.34123027403)
+Step 15: log likelihood: -2933.56541109   (diff=1.45114455759)
+Step 16: log likelihood: -2932.50329834   (diff=1.06211274104)
+Step 17: log likelihood: -2931.6131419   (diff=0.890156442188)
+Step 18: log likelihood: -2930.84316869   (diff=0.769973207313)
+Step 19: log likelihood: -2930.20869633   (diff=0.634472362919)
+Step 20: log likelihood: -2929.71403334   (diff=0.494662993972)
+Step 21: log likelihood: -2929.30273173   (diff=0.411301606659)
+Step 22: log likelihood: -2928.83515997   (diff=0.467571759812)
+Step 23: log likelihood: -2928.14892766   (diff=0.686232310017)
+Step 24: log likelihood: -2927.26750858   (diff=0.881419084902)
+Step 25: log likelihood: -2926.17741575   (diff=1.09009283025)
+Step 26: log likelihood: -2924.90417299   (diff=1.27324275228)
+Step 27: log likelihood: -2923.94720685   (diff=0.95696614857)
+Step 28: log likelihood: -2923.4871062   (diff=0.460100644041)
+Step 28: log likelihood: -2923.28954442   (diff=0.197561781967)
+Convergence reached with log\_p -2923.28954442 after 28 steps.
+classify loglikelihood: -2923.28954442.
+
+
+** Clustering **
+Cluster  0 , size 30
+[60, 75, 148, 158, 160, 200, 217, 407, 408, 409, 412, 414, 422, 424, 433, 438, 448, 454, 460, 464, 479, 481, 482, 485, 486, 487, 490, 494, 495, 499] 
+
+Cluster  1 , size 76
+[400, 401, 402, 403, 404, 405, 406, 410, 411, 413, 415, 416, 417, 418, 419, 420, 421, 423, 425, 426, 427, 428, 429, 430, 431, 432, 434, 435, 436, 437, 439, 440, 441, 442, 443, 444, 445, 446, 447, 450, 451, 452, 453, 455, 456, 457, 458, 459, 461, 462, 463, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 480, 483, 484, 488, 489, 491, 492, 493, 496, 497, 498] 
+
+Cluster  2 , size 99
+[135, 141, 186, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 313, 314, 315, 316, 317, 318, 319, 320, 321, 323, 324, 325, 326, 327, 328, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399] 
+
+Cluster  3 , size 295
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 136, 137, 138, 139, 140, 142, 143, 144, 145, 146, 147, 149, 150, 151, 152, 153, 154, 155, 156, 157, 159, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 312, 322, 329, 357, 449] 
+
+Unassigend due to entropy cutoff:
+[]
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Project_files/STA663_Final_Project_8_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+<ggplot: (303148237)>
+    \end{Verbatim}
+
+    \section{4) Application and
+Comparison}\label{application-and-comparison}
+
+    \subsubsection{Data}\label{data}
+
+To apply this algorithm to a real problem on real data, I examine the
+Adjudicated Toronto Youth Data. The data include the number of criminal
+court appearances by 378 youth in Toronto. Each individual has 5 years
+of data, where each row contains the number of unique court contacts per
+year for an individual from the age of 18 to 23.
+
+    \subsubsection{Comparison}\label{comparison}
+
+I compare the EM algorithm approach to a Bayesian finite mixture written
+in the probabilistic programming language STAN, and called by the python
+module pystan. This approach using MCMC instead of the MLE approach
+based on the EM algorithm.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}74}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R}
+         load(\PYZdq{}/Data/TO1adj.rda\PYZdq{})
+         load(\PYZdq{}/Data/TO1stan.rda\PYZdq{})
+         TO1adj \PYZlt{}\PYZhy{} TO1adj[,10:15]
+         \PYZsh{} Data are located in GitHub Repo in Data Directory
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}75}]:} \PY{n}{TO1adj} \PY{o}{=} \PY{o}{\PYZpc{}}\PY{k}{R} TO1adj
+         \PY{n}{TO1stan} \PY{o}{=} \PY{o}{\PYZpc{}}\PY{k}{R} TO1stan
+         \PY{n}{TO1adj} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{TO1adj}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}76}]:} \PY{n}{outs} \PY{o}{=} \PY{n}{GBFMM}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{TO1adj}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Step 1: log likelihood: -5874.69620147   (diff=-5873.69620147)
+Step 2: log likelihood: -5782.28775531   (diff=92.408446164)
+Step 3: log likelihood: -5735.37279974   (diff=46.9149555604)
+Step 4: log likelihood: -5725.59455795   (diff=9.77824179596)
+Step 5: log likelihood: -5721.56812432   (diff=4.02643363104)
+Step 6: log likelihood: -5709.27463866   (diff=12.2934856551)
+Step 7: log likelihood: -5677.63503708   (diff=31.6396015824)
+Step 8: log likelihood: -5577.26677048   (diff=100.368266603)
+Step 9: log likelihood: -5360.78622798   (diff=216.480542493)
+Step 10: log likelihood: -5161.11428695   (diff=199.671941031)
+Step 11: log likelihood: -4949.69647743   (diff=211.417809524)
+Step 12: log likelihood: -4864.92774278   (diff=84.7687346443)
+Step 13: log likelihood: -4837.29260321   (diff=27.63513957)
+Step 14: log likelihood: -4831.85916386   (diff=5.43343935681)
+Step 15: log likelihood: -4830.13973582   (diff=1.71942804021)
+Step 16: log likelihood: -4829.07981934   (diff=1.05991648075)
+Step 17: log likelihood: -4828.08993193   (diff=0.989887406076)
+Step 18: log likelihood: -4827.06546163   (diff=1.02447029583)
+Step 19: log likelihood: -4826.4053168   (diff=0.660144833062)
+Step 19: log likelihood: -4826.21801076   (diff=0.187306036481)
+Convergence reached with log\_p -4826.21801076 after 19 steps.
+classify loglikelihood: -4826.21801076.
+
+
+** Clustering **
+Cluster  0 , size 134
+[3, 4, 6, 7, 14, 19, 25, 32, 35, 37, 40, 51, 53, 55, 56, 58, 61, 64, 65, 66, 68, 72, 75, 78, 80, 85, 88, 93, 102, 104, 106, 107, 109, 114, 116, 117, 119, 120, 122, 124, 128, 133, 135, 139, 140, 146, 147, 148, 150, 151, 152, 154, 155, 156, 158, 162, 167, 168, 171, 173, 174, 176, 177, 186, 187, 190, 191, 195, 196, 198, 199, 200, 203, 204, 205, 206, 210, 212, 214, 216, 217, 218, 219, 220, 230, 233, 234, 238, 241, 249, 250, 256, 258, 259, 261, 263, 270, 273, 275, 276, 280, 283, 291, 296, 297, 300, 304, 305, 309, 310, 313, 316, 317, 321, 325, 327, 328, 333, 337, 340, 341, 344, 345, 346, 347, 351, 355, 361, 365, 369, 370, 373, 375, 376] 
+
+Cluster  1 , size 244
+[0, 1, 2, 5, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 33, 34, 36, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 52, 54, 57, 59, 60, 62, 63, 67, 69, 70, 71, 73, 74, 76, 77, 79, 81, 82, 83, 84, 86, 87, 89, 90, 91, 92, 94, 95, 96, 97, 98, 99, 100, 101, 103, 105, 108, 110, 111, 112, 113, 115, 118, 121, 123, 125, 126, 127, 129, 130, 131, 132, 134, 136, 137, 138, 141, 142, 143, 144, 145, 149, 153, 157, 159, 160, 161, 163, 164, 165, 166, 169, 170, 172, 175, 178, 179, 180, 181, 182, 183, 184, 185, 188, 189, 192, 193, 194, 197, 201, 202, 207, 208, 209, 211, 213, 215, 221, 222, 223, 224, 225, 226, 227, 228, 229, 231, 232, 235, 236, 237, 239, 240, 242, 243, 244, 245, 246, 247, 248, 251, 252, 253, 254, 255, 257, 260, 262, 264, 265, 266, 267, 268, 269, 271, 272, 274, 277, 278, 279, 281, 282, 284, 285, 286, 287, 288, 289, 290, 292, 293, 294, 295, 298, 299, 301, 302, 303, 306, 307, 308, 311, 312, 314, 315, 318, 319, 320, 322, 323, 324, 326, 329, 330, 331, 332, 334, 335, 336, 338, 339, 342, 343, 348, 349, 350, 352, 353, 354, 356, 357, 358, 359, 360, 362, 363, 364, 366, 367, 368, 371, 372, 374, 377] 
+
+Unassigend due to entropy cutoff:
+[]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}77}]:} \PY{n}{plot\PYZus{}traj}\PY{p}{(}\PY{n}{outs}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Project_files/STA663_Final_Project_15_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+<ggplot: (308464657)>
+    \end{Verbatim}
+
+    \subsubsection{Results}\label{results}
+
+The EM based finite mixture algorithm has identified two clustered
+trajectories. The red shows a cluster of youth who are coming into
+contact with criminal courts frequently over this five year period. The
+blue line shows a low risk trajectory.
+
+Now let's try the MCMC approach:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}97}]:} \PY{n}{model\PYZus{}code} \PY{o}{=} \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         \PY{l+s}{data \PYZob{}}
+         \PY{l+s}{  int\PYZlt{}lower=1\PYZgt{} K;                                                  \PYZsh{} K components}
+         \PY{l+s}{  int\PYZlt{}lower=1\PYZgt{} N;                                                  \PYZsh{} N observations}
+         \PY{l+s}{  real y[N];                                                       \PYZsh{} variable of interest}
+         \PY{l+s}{\PYZcb{}}
+         \PY{l+s}{parameters \PYZob{}}
+         \PY{l+s}{  simplex[K] theta;                                                \PYZsh{} mixing proportions}
+         \PY{l+s}{  simplex[K] mu\PYZus{}prop;}
+         \PY{l+s}{  real mu\PYZus{}loc;}
+         \PY{l+s}{  real\PYZlt{}lower=0\PYZgt{} mu\PYZus{}scale;}
+         \PY{l+s}{  real\PYZlt{}lower=0\PYZgt{} sigma[K];                                          \PYZsh{} sds of the components}
+         \PY{l+s}{\PYZcb{}}
+         \PY{l+s}{transformed parameters \PYZob{}}
+         \PY{l+s}{  ordered[K] mu;}
+         \PY{l+s}{  mu \PYZlt{}\PYZhy{} mu\PYZus{}loc + mu\PYZus{}scale * cumulative\PYZus{}sum(mu\PYZus{}prop);               \PYZsh{} means of the components}
+         \PY{l+s}{\PYZcb{}}
+         \PY{l+s}{model \PYZob{}}
+         \PY{l+s}{  // prior}
+         \PY{l+s}{  mu\PYZus{}loc \PYZti{} cauchy(0,5);}
+         \PY{l+s}{  mu\PYZus{}scale \PYZti{} cauchy(0,5);}
+         \PY{l+s}{  sigma \PYZti{} cauchy(0,5);}
+         \PY{l+s}{  // likelihood}
+         \PY{l+s}{  \PYZob{}}
+         \PY{l+s}{    real ps[K];}
+         \PY{l+s}{    vector[K] log\PYZus{}theta;}
+         \PY{l+s}{    log\PYZus{}theta \PYZlt{}\PYZhy{} log(theta);}
+         \PY{l+s}{    for (n in 1:N) \PYZob{}}
+         \PY{l+s}{      for (k in 1:K) \PYZob{}}
+         \PY{l+s}{        ps[k] \PYZlt{}\PYZhy{} log\PYZus{}theta[k]}
+         \PY{l+s}{                 + normal\PYZus{}log(y[n],mu[k],sigma[k]);}
+         \PY{l+s}{      \PYZcb{}}
+         \PY{l+s}{      increment\PYZus{}log\PYZus{}prob(log\PYZus{}sum\PYZus{}exp(ps));}
+         \PY{l+s}{    \PYZcb{}}
+         \PY{l+s}{  \PYZcb{}}
+         \PY{l+s}{\PYZcb{}}
+         \PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         
+         \PY{n}{dat} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{K}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{2}\PY{p}{,}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{N}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb}{len}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{TO1stan}\PY{p}{)}\PY{p}{)}\PY{p}{,}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{y}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{TO1stan}\PY{p}{)}\PY{p}{,}
+         \PY{p}{\PYZcb{}}
+         
+         \PY{n}{fit} \PY{o}{=} \PY{n}{pystan}\PY{o}{.}\PY{n}{stan}\PY{p}{(}\PY{n}{model\PYZus{}code}\PY{o}{=}\PY{n}{model\PYZus{}code}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{dat}\PY{p}{,} \PY{n+nb}{iter}\PY{o}{=}\PY{l+m+mi}{1000}\PY{p}{,} \PY{n}{chains}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/Users/Josh/anaconda/lib/python2.7/multiprocessing/queues.py:390: UserWarning: Pickling fit objects is an experimental feature!
+The relevant StanModel instance must be pickled along with this fit object.
+When unpickling the StanModel must be unpickled first.
+  return send(obj)
+/Users/Josh/anaconda/lib/python2.7/multiprocessing/queues.py:390: UserWarning: Pickling fit objects is an experimental feature!
+The relevant StanModel instance must be pickled along with this fit object.
+When unpickling the StanModel must be unpickled first.
+  return send(obj)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}98}]:} \PY{k}{print} \PY{n}{fit}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Inference for Stan model: anon\_model\_0ea983c07018240174b20728e647dd40.
+2 chains, each with iter=1000; warmup=500; thin=1; 
+post-warmup draws per chain=500, total post-warmup draws=1000.
+
+             mean se\_mean     sd   2.5\%    25\%    50\%    75\%  97.5\%  n\_eff   Rhat
+theta[0]     0.35  1.9e-3   0.03   0.29   0.33   0.35   0.37   0.41  257.0    1.0
+theta[1]     0.65  1.9e-3   0.03   0.59   0.63   0.65   0.67   0.71  257.0    1.0
+mu\_prop[0]   0.38    0.02    0.2   0.02   0.21   0.38   0.54   0.72   79.0    1.0
+mu\_prop[1]   0.62    0.02    0.2   0.28   0.46   0.62   0.79   0.98   79.0    1.0
+mu\_loc        0.2    0.18   1.53  -3.61  -0.67   0.61   1.43   1.98   74.0    1.0
+mu\_scale     4.08    0.18   1.53   2.29   2.86   3.68   4.95   7.86   74.0    1.0
+sigma[0]     0.25  1.4e-3   0.02    0.2   0.23   0.24   0.26   0.29  268.0    1.0
+sigma[1]     0.44  1.7e-3   0.03   0.39   0.42   0.44   0.45   0.49  244.0    1.0
+mu[0]        2.02  1.5e-3   0.03   1.97   2.01   2.02   2.04   2.08  306.0    1.0
+mu[1]        4.28  1.9e-3   0.03    4.2   4.25   4.28    4.3   4.34  319.0    1.0
+lp\_\_       -283.6    0.13   1.75 -288.0 -284.5 -283.2 -282.3 -281.2  182.0    1.0
+
+Samples were drawn using NUTS(diag\_e) at Thu Apr 30 15:29:21 2015.
+For each parameter, n\_eff is a crude measure of effective sample size,
+and Rhat is the potential scale reduction factor on split chains (at 
+convergence, Rhat=1).
+    \end{Verbatim}
+
+    \subsubsection{Results}\label{results}
+
+While similar inferences can be drawn from this MCMC method, and I would
+argue in many cases the Bayesian results are more robust, convergence
+time is much slower. For mixture model problems where the underlying
+structure is not incredibly complex, the EM algorithm employed by the
+Group-Based Finite Mixture Model may be more practical.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

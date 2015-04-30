@@ -12,7 +12,7 @@ Dependencies
 
 **Required**
 
-* Python (creating using 2.7.x)
+* Python (created using 2.7.x)
 * Numpy
 * Scipy 
 * Pymix (https://github.com/klahnakoski/pymix.git)
